@@ -16,8 +16,13 @@ $(document).on('change', ".task-data input", function(event){
 
 	var attr = $(this).attr('data');
 
-	$(document).find('.task-data p[data-collapse="'+ attr +'"]').toggleClass('action');
-    $(document).find('.progress[data-collapse="'+ attr +'"]').toggleClass('action');
+	$(document).find('.wtask p[datas="'+ attr +'"]').toggleClass('action');
+
+    if($(document).find('.wtask p[datas="'+ attr +'"]').hasClass('action')){
+        $(document).find('.bar-prog[data-collapse="'+ attr +'"]').removeClass('action');
+    } else {
+        $(document).find('.bar-prog[data-collapse="'+ attr +'"]').addClass('action');
+    }
 });
 
 //Tambah Anggota
@@ -69,9 +74,15 @@ $(document).on('click', ".info2 .screen", function(){
 });
 
 //Task
-$(document).on('click', ".wrap-task", function(){
-    $('.goal').addClass('action');
-    $('.cgoal').addClass('action');
+$(document).on('click', ".wrap-task p", function(){
+    if( !$(this).hasClass('action') ){
+        $('.goal').addClass('action');
+        $('.cgoal').addClass('action');
+
+        var attr = $(this).attr('datas');
+
+        $(document).find('.bar-prog[data-collapse="'+ attr +'"]').addClass('action');
+    }
 });
 
 $(document).on('click', ".goal .btn-close", function(){
@@ -115,3 +126,30 @@ $(document).on('click', ".kontak .screen", function(){
     $('.kontak').removeClass('action');
     $('.ckontak').removeClass('action');
 });
+
+//Btn Goal
+$(document).on('click', ".btn-goal", function(){
+    $('.goal-form').toggleClass('action');
+});
+
+//Btn Metrics
+$(document).on('click', ".btn-metrics", function(){
+    $('.metrics-form').toggleClass('action');
+});
+
+//Btn Notifikasi
+$(document).on('click', ".btn-notif", function(){
+    $(this).toggleClass('action');
+    $('.notifikasi').toggleClass('action');
+    $('.cnotifikasi').toggleClass('action');
+    $('.screen-notif').toggleClass('action');
+});
+
+//Screen Notifikasi
+$(document).on('click', ".screen-notif", function(){
+    $('.btn-notif').removeClass('action');
+    $('.notifikasi').removeClass('action');
+    $('.cnotifikasi').removeClass('action');
+    $('.screen-notif').removeClass('action');
+});
+
