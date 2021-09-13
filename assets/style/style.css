@@ -804,7 +804,7 @@ footer p {
     visibility: hidden;
     opacity: 0;
     transition: .3s;
-    z-index: 999;
+    z-index: 999999;
 }
 
 .info.action, .info2.action{
@@ -848,7 +848,7 @@ footer p {
 .cgoal{
     position: relative;
     align-items: flex-start;
-    height: 80vh;
+    height: 500px;
     width: 90%;
     max-width: 1000px;
     transform: scale(0.0);
